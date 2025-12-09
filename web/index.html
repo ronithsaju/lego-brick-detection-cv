@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ronith's Assignment 1</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+
+</head>
+
+<body style="background-image: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);">
+
+    <!-- HTML STARTS HERE -->
+
+    <!-- Type your codes here -->
+    <div class="container-sm|md|lg|xl p-4 mx-3">
+        
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <h1 class="text-white" style="font-weight: bold; font-size:400%;">Lego Detection</h1>
+
+                <div class="row ml-1">
+                    <h3 id="p1" class="text-white"> Click Start to start the video </h3>
+                </div>
+
+                <div class="row ml-1">
+                    <div class="form-group">
+                        <select class="form-control" id="idOption">
+                            <option value="brick1_01"> brick1_01 </option>
+                            <option value="brick1_02"> brick1_02 </option>
+                            <option value="brick1_03"> brick1_03 </option>
+                            <option value="brick1_04"> brick1_04 </option>
+                            <option value="brick1_05"> brick1_05 </option>
+                            <option value="brick1_06"> brick1_06 </option>
+                            <option value="brick1_07"> brick1_07 </option>
+                            <option value="brick3_08"> brick3_08 </option>
+                            <option value="brick3_09"> brick3_09 </option>
+                            <option value="brick3_10"> brick3_10 </option>
+                            <option value="brick3_11"> brick3_11 </option>
+                            <option value="brick3_12"> brick3_12 </option>
+                            <option value="brick3_13"> brick3_13 </option>
+                            <option value="brick6_14"> brick6_14 </option>
+                            <option value="brick6_15"> brick6_15 </option>
+                            <option value="brick6_16"> brick6_16 </option>
+                            <option value="brick6_17"> brick6_17 </option>
+                            <option value="brick6_18"> brick6_18 </option>
+                            <option value="brick6_19"> brick6_19 </option>
+                            <option value="Set1-1-Test"> Set1-1-Test </option>
+                            <option value="Set3-6-Test"> Set3-6-Test </option>
+                            <option value="Set6-3-Test"> Set6-3-Test </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row ml-1">
+                    <img id="video" src="./image/empty.png">
+                </div>
+                <div class="row my-3 ml-1">
+                    <button onclick="eel.video_feed()" id="btn1" type="button" class="btn mr-3 btn-primary">Start</button>
+                    <button onclick="eel.stop_video_feed()" id="btn2" type="button" class="btn mr-3 btn-warning">Pause</button>
+                    <button onclick="eel.restart_video_feed()" id="btn3" type="button" class="btn mr-3 btn-info">Resume</button>
+                    <button onclick="eel.save_video_feed()" id="btn3" type="button" class="btn mr-3 btn-dark">Save</button>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <div class="col mt-5">
+                    <div class="row mt-5">
+                        <div class="custom-control custom-switch mx-5">
+                            <input type="checkbox" class="custom-control-input" id="lego_detection" onclick="eel.label()">
+                            <label class="custom-control-label text-white" for="lego_detection">Lego Detection</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="custom-control custom-switch mx-5">
+                            <input type="checkbox" class="custom-control-input" id="contour_detection" onclick="eel.contour()">
+                            <label class="custom-control-label text-white" for="contour_detection">Contour Detection</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="custom-control custom-switch mx-5">
+                            <input type="checkbox" class="custom-control-input" id="circle_detection" onclick="eel.circle()">
+                            <label class="custom-control-label text-white" for="circle_detection">Circle Detection</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="custom-control custom-switch mx-5">
+                            <input type="checkbox" class="custom-control-input" id="center_detection" onclick="eel.center()">
+                            <label class="custom-control-label text-white" for="center_detection">Center Detection</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+
+            <div class="col">
+                <style>
+                    table, th, td {
+                        border: 0px solid black;
+                        border-collapse: collapse;
+                    }
+                </style>
+                <table>
+                    <tr>
+                        <td id="lime2x2" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/lime2x2.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#95d04f";>Lime 2x2</span>
+                            <span class="badge badge-primary" id="lime2x2badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="orange2x2" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/orange2x2.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#f88105";>Orange 2x2</span>
+                            <span class="badge badge-primary" id="orange2x2badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="yellow2x2" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/yellow2x2.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#ffbd04";>Yellow 2x2</span>
+                            <span class="badge badge-primary" id="yellow2x2badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="yellow2x3" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/yellow2x3.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#ffbd04";>Yellow 2x3</span>
+                            <span class="badge badge-primary" id="yellow2x3badge"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="yellow2x4" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/yellow2x4.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#ffbd04";>Yellow 2x4</span>
+                            <span class="badge badge-primary" id="yellow2x4badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="lime2x4" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/lime2x4.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#95d04f";>Lime 2x4</span>
+                            <span class="badge badge-primary" id="lime2x4badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="light_grey2x4" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/light_grey2x4.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#aeaaaa";>Light Grey 2x4</span>
+                            <span class="badge badge-primary" id="light_grey2x4badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="orange2x4" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/orange2x4.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#f88105";>Orange 2x4</span>
+                            <span class="badge badge-primary" id="orange2x4badge"></span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td id="medium_blue2x4" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/medium_blue2x4.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#7daedc";>Medium Blue 2x4</span>
+                            <span class="badge badge-primary" id="medium_blue2x4badge"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="green2x8" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/green2x8.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#00b153";>Green 2x8</span>
+                            <span class="badge badge-primary" id="green2x8badge"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="grey2x8" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/grey2x8.png" width=auto height="50">
+                            <span style="font-weight: bold; color:#3b3936";>Grey 2x8</span>
+                            <span class="badge badge-primary" id="grey2x8badge"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="medium_azure4x6" style="width:35px; font-weight: bold; color:white; font-size:125%";>0</td>
+                        <td>
+                            <img src="./image/bricks/medium_azure4x6.png" width=auto height="100">
+                            <span style="font-weight: bold; color:#7eaedc";>Medium Azure 4x6</span>
+                            <span class="badge badge-primary" id="medium_azure4x6badge"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td id="total" style="width:35px; font-weight: bold; color:white; font-size:150%";>0</td>
+                        <td style="font-weight: bold; color:white; font-size:150%";>Total</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML ENDS HERE -->
+
+</body>
+
+</html>
